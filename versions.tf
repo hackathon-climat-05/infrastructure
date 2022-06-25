@@ -1,13 +1,10 @@
 terraform {
-  cloud {
-    organization = "hackathon-climat-05"
-
-    workspaces {
-      name = "infrastructure"
-    }
-  }
-
   required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "3.3.2"
+    }
+
     google = {
       source  = "hashicorp/google"
       version = "4.26.0"

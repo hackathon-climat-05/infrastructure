@@ -16,8 +16,6 @@ jobs:
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     - name: Terraform Format
       id: fmt
@@ -28,7 +26,7 @@ jobs:
       id: init
       run: |
         terraform init
-    
+
     - name: Terraform Validate
       id: validate
       run: |
@@ -38,7 +36,7 @@ jobs:
       id: plan
       if: github.event_name == 'pull_request'
       env:
-        TF_VAR_google_credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       run: |
         terraform plan -no-color -input=false
       continue-on-error: true
@@ -80,6 +78,6 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       env:
-        TF_VAR_google_credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       run: |
         terraform apply -auto-approve -input=false
