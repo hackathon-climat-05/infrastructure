@@ -1,6 +1,6 @@
 resource "google_container_cluster" "prod_cluster" {
-    name             = "prod-cluster"
-    enable_autopilot = true
+  name             = "prod-cluster"
+  enable_autopilot = true
 }
 
 locals {
