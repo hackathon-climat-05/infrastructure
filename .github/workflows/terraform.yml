@@ -40,7 +40,7 @@ jobs:
       env:
         TF_VAR_google_credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
       run: |
-        terraform plan -no-color -input=false -var 'name=value'
+        terraform plan -no-color -input=false
       continue-on-error: true
 
     - uses: actions/github-script@v6
