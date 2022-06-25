@@ -1,5 +1,6 @@
 resource "google_container_cluster" "prod_cluster" {
   name             = "prod-cluster"
+  location         = "europe-west1"
   enable_autopilot = true
 }
 
