@@ -9,3 +9,13 @@ provider "kubernetes" {
   client_key             = local.cluster_client_key
   cluster_ca_certificate = local.cluster_ca_certificate
 }
+
+provider "helm" {
+  kubernetes {
+    host = local.cluster_host
+
+    client_certificate     = local.cluster_client_certificate
+    client_key             = local.cluster_client_key
+    cluster_ca_certificate = local.cluster_ca_certificate
+  }
+}
