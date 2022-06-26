@@ -2,6 +2,8 @@ resource "google_container_cluster" "prod_cluster" {
   name             = "prod-cluster"
   location         = "europe-west1"
   enable_autopilot = true
+
+  ip_allocation_policy {} # See https://github.com/hashicorp/terraform-provider-google/issues/10782
 }
 
 locals {
