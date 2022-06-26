@@ -39,6 +39,7 @@ jobs:
       if: github.event_name == 'pull_request'
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_ssh_deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
       run: |
         terraform plan -no-color -input=false
       continue-on-error: true
@@ -81,5 +82,6 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_ssh_deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
       run: |
         terraform apply -auto-approve -input=false
