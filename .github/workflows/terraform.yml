@@ -44,10 +44,21 @@ jobs:
         terraform plan -no-color -input=false
       continue-on-error: true
 
-    - uses: actions/github-script@v6
+    - name: Truncate plan output
+      id: truncate
+      run: |
+        PLAN=$(head -c 65000 <<'PLAN_EOF'
+        ${{ steps.plan.outputs.stdout }}${{ steps.plan.outputs.stderr }}
+        PLAN_EOF
+        )
+
+        echo "PLAN<<PLAN_EOF" >> $GITHUB_ENV
+        echo "$PLAN" >> $GITHUB_ENV
+        echo "PLAN_EOF" >> $GITHUB_ENV
+
+    - name: Add PR comment
+      uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
-      env:
-        PLAN: ${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |

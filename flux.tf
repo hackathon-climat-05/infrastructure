@@ -94,7 +94,7 @@ resource "kubernetes_secret" "main" {
   }
 }
 
-resource "git_commit" "example_write" {
+resource "git_commit" "flux_manifests" {
   url     = data.flux_sync.main.url
   branch  = data.flux_sync.main.branch
   message = "Add Flux manifests"
@@ -102,16 +102,16 @@ resource "git_commit" "example_write" {
 
   add {
     path    = data.flux_install.main.path
-    content = data.flux_install.main.content
+    content = sensitive(data.flux_install.main.content)
   }
 
   add {
     path    = data.flux_sync.main.path
-    content = data.flux_sync.main.content
+    content = sensitive(data.flux_sync.main.content)
   }
 
   add {
     path    = data.flux_sync.main.kustomize_path
-    content = data.flux_sync.main.kustomize_content
+    content = sensitive(data.flux_sync.main.kustomize_content)
   }
 }
