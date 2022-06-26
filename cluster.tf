@@ -7,9 +7,9 @@ resource "google_container_cluster" "prod_cluster" {
 }
 
 locals {
-  cluster_host = google_container_cluster.prod_cluster
+  cluster_host = "https://${google_container_cluster.prod_cluster.endpoint}"
 
-  cluster_client_certificate = google_container_cluster.prod_cluster.master_auth.0.client_certificate
-  cluster_client_key         = google_container_cluster.prod_cluster.master_auth.0.client_key
-  cluster_ca_certificate     = google_container_cluster.prod_cluster.master_auth.0.cluster_ca_certificate
+  cluster_client_certificate = google_container_cluster.prod_cluster.master_auth[0].client_certificate
+  cluster_client_key         = google_container_cluster.prod_cluster.master_auth[0].client_key
+  cluster_ca_certificate     = base64decode(google_container_cluster.prod_cluster.master_auth[0].cluster_ca_certificate)
 }
