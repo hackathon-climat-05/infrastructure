@@ -3,9 +3,7 @@ provider "google" {
 }
 
 provider "kubernetes" {
-  host = local.cluster_host
-
-  client_certificate     = local.cluster_client_certificate
-  client_key             = local.cluster_client_key
+  host                   = local.cluster_host
+  token                  = local.cluster_token
   cluster_ca_certificate = local.cluster_ca_certificate
 }
