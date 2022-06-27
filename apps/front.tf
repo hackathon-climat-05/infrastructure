@@ -32,9 +32,9 @@ resource "kubernetes_deployment" "app_front" {
 
       spec {
         container {
-          image = "ghcr.io/hackathon-climat-05/app-front:${local.versions[var.env].front}"
+          image             = "ghcr.io/hackathon-climat-05/app-front:${local.versions[var.env].front}"
           image_pull_policy = "Always"
-          name  = "app-front"
+          name              = "app-front"
 
           port {
             name           = "http"
@@ -112,6 +112,12 @@ resource "kubernetes_horizontal_pod_autoscaler" "front_autoscaler" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      spec.0.behavior
+    ]
+  }
 }
 
 resource "kubernetes_service" "front" {
@@ -137,7 +143,7 @@ resource "kubernetes_service" "front" {
       target_port = "http"
     }
 
-    type = "ClusterIP"
+    type = "LoadBalancer"
   }
 
   lifecycle {

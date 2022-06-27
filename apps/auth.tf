@@ -35,9 +35,9 @@ resource "kubernetes_deployment" "auth_microservice" {
 
       spec {
         container {
-          image = "ghcr.io/hackathon-climat-05/auth-microservice:${local.versions[var.env].auth}"
+          image             = "ghcr.io/hackathon-climat-05/auth-microservice:${local.versions[var.env].auth}"
           image_pull_policy = "Always"
-          name  = "auth-microservice"
+          name              = "auth-microservice"
 
           port {
             name           = "http"
@@ -83,7 +83,7 @@ resource "kubernetes_deployment" "auth_microservice" {
 
 resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
   metadata {
-    name = "auth-autoscaler"
+    name      = "auth-autoscaler"
     namespace = kubernetes_namespace.namespace.metadata[0].name
   }
 
@@ -109,11 +109,17 @@ resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      spec.0.behavior
+    ]
+  }
 }
 
 resource "kubernetes_service" "auth" {
   metadata {
-    name = "auth"
+    name      = "auth"
     namespace = kubernetes_namespace.namespace.metadata[0].name
   }
 
