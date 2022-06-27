@@ -6,7 +6,10 @@ module "prod_apps" {
   domains = [
     "greenmile.app",
     "greenmile.earth",
-    "greenmile.cloud"
+    "greenmile.cloud",
+    "www.greenmile.app",
+    "www.greenmile.earth",
+    "www.greenmile.cloud"
   ]
 }
 
@@ -18,6 +21,9 @@ module "stg_apps" {
   domains = [
     "stg.greenmile.app",
     "stg.greenmile.earth",
-    "stg.greenmile.cloud"
+    "stg.greenmile.cloud",
+    "www.stg.greenmile.app",
+    "www.stg.greenmile.earth",
+    "www.stg.greenmile.cloud"
   ]
 }
