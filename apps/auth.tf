@@ -70,7 +70,7 @@ resource "kubernetes_deployment" "auth_microservice" {
   }
 }
 
-resource "kubernetes_horizontal_pod_autoscaler_v2" "auth_autoscaler" {
+resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
   metadata {
     name = "auth-autoscaler"
   }

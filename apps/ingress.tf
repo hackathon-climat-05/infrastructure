@@ -8,6 +8,10 @@ resource "kubernetes_ingress" "app_ingress" {
       side = "frontend"
       env  = var.env
     }
+
+    annotations = {
+      "kubernetes.io/ingress.class" = "gce"
+    }
   }
 
   spec {

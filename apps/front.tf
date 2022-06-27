@@ -67,7 +67,7 @@ resource "kubernetes_deployment" "app_front" {
   }
 }
 
-resource "kubernetes_horizontal_pod_autoscaler_v2" "front_autoscaler" {
+resource "kubernetes_horizontal_pod_autoscaler" "front_autoscaler" {
   metadata {
     name      = "front-autoscaler"
     namespace = kubernetes_namespace.namespace.metadata[0].name
@@ -126,6 +126,6 @@ resource "kubernetes_service" "front" {
       target_port = "http"
     }
 
-    type = "LoadBalancer"
+    type = "ClusterIP"
   }
 }
