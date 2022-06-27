@@ -36,6 +36,7 @@ resource "kubernetes_deployment" "auth_microservice" {
       spec {
         container {
           image = "ghcr.io/hackathon-climat-05/auth-microservice:${local.versions[var.env].auth}"
+          image_pull_policy = "Always"
           name  = "auth-microservice"
 
           port {

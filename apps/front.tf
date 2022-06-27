@@ -33,6 +33,7 @@ resource "kubernetes_deployment" "app_front" {
       spec {
         container {
           image = "ghcr.io/hackathon-climat-05/app-front:${local.versions[var.env].front}"
+          image_pull_policy = "Always"
           name  = "app-front"
 
           port {
