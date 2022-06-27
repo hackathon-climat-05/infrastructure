@@ -132,7 +132,7 @@ resource "kubernetes_service" "front" {
     }
 
     annotations = {
-      "cloud.google.com/load-balancer-type" = "Internal"
+      "networking.gke.io/load-balancer-type" = "Internal"
     }
   }
 

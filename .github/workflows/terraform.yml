@@ -44,7 +44,7 @@ jobs:
       continue-on-error: true
 
     - name: Truncate plan output
-      id: truncate
+      if: github.event_name == 'pull_request'
       run: |
         PLAN=$(head -c 65000 <<'PLAN_EOF'
         ${{ steps.plan.outputs.stdout }}${{ steps.plan.outputs.stderr }}
