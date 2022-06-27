@@ -83,6 +83,7 @@ resource "kubernetes_deployment" "auth_microservice" {
 resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
   metadata {
     name = "auth-autoscaler"
+    namespace = kubernetes_namespace.namespace.metadata[0].name
   }
 
   spec {
@@ -112,6 +113,7 @@ resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
 resource "kubernetes_service" "auth" {
   metadata {
     name = "auth"
+    namespace = kubernetes_namespace.namespace.metadata[0].name
   }
 
   spec {
