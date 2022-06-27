@@ -65,6 +65,16 @@ resource "kubernetes_deployment" "app_front" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations,
+      spec.0.template.0.spec.0.container.0.resources.0.limits,
+      spec.0.template.0.spec.0.container.0.resources.0.requests,
+      spec.0.template.0.spec.0.container.0.security_context,
+      spec.0.template.0.spec.0.security_context
+    ]
+  }
 }
 
 resource "kubernetes_horizontal_pod_autoscaler" "front_autoscaler" {
@@ -127,5 +137,11 @@ resource "kubernetes_service" "front" {
     }
 
     type = "ClusterIP"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations
+    ]
   }
 }
