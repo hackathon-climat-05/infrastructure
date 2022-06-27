@@ -17,7 +17,7 @@ resource "kubernetes_ingress" "app_ingress" {
           path = "/*"
 
           backend {
-            service_name = "front"
+            service_name = kubernetes_service.front.metadata[0].name
             service_port = "http"
           }
         }
