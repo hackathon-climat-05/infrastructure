@@ -1,3 +1,7 @@
+resource "google_compute_global_address" "static_ip" {
+  name = "greenmile-front-${var.env}"
+}
+
 resource "kubernetes_manifest" "app_ssl_certificate" {
   manifest = {
     apiVersion = "networking.gke.io/v1"
@@ -26,8 +30,9 @@ resource "kubernetes_ingress_v1" "app_ingress" {
     }
 
     annotations = {
-      "kubernetes.io/ingress.class"            = "gce"
-      "networking.gke.io/managed-certificates" = kubernetes_manifest.app_ssl_certificate.manifest.metadata.name
+      "kubernetes.io/ingress.class"                 = "gce"
+      "networking.gke.io/managed-certificates"      = kubernetes_manifest.app_ssl_certificate.manifest.metadata.name
+      "kubernetes.io/ingress.global-static-ip-name" = google_compute_global_address.static_ip.name
     }
   }
 
