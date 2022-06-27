@@ -56,3 +56,6 @@ resource "kubernetes_ingress_v1" "app_ingress" {
     }
   }
 }
+
+# https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-features#https_redirect
+# https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-features#cloud_cdn

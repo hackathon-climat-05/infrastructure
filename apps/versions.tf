@@ -3,17 +3,17 @@ locals {
     prod = {
       front      = "v0.0.1"
       auth       = "v0.0.1"
-      calculator = ""
-      data       = ""
-      challenges = ""
+      calculator = "v0.0.1"
+      data       = "v0.0.1"
+      challenges = "v0.0.1"
     }
 
     stg = {
-      front      = "stg-main-f20cc5a-1656331750"
-      auth       = "stg-main-d499feb-1656247276"
-      calculator = ""
-      data       = ""
-      challenges = ""
+      front      = "stg-latest"
+      auth       = "stg-latest"
+      calculator = "stg-latest"
+      data       = "stg-latest"
+      challenges = "stg-latest"
     }
   }
 }
