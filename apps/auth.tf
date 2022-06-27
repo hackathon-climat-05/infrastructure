@@ -58,7 +58,7 @@ resource "kubernetes_deployment" "auth_microservice" {
           liveness_probe {
             http_get {
               path = "/livez"
-              port = 80
+              port = 8080
             }
 
             initial_delay_seconds = 1
