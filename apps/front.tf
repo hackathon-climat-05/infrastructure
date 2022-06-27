@@ -130,6 +130,10 @@ resource "kubernetes_service" "front" {
       side = "frontend"
       env  = var.env
     }
+
+    annotations = {
+      "cloud.google.com/load-balancer-type" = "Internal"
+    }
   }
 
   spec {
