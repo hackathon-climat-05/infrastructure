@@ -54,7 +54,7 @@ resource "kubernetes_deployment" "app_front" {
 
           liveness_probe {
             http_get {
-              path = "/livez"
+              path = "/api/livez"
               port = 8080
             }
 

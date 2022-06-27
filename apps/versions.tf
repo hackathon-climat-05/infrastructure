@@ -9,7 +9,7 @@ locals {
     }
 
     stg = {
-      front      = "stg-main-1e79f53-1656265966"
+      front      = "stg-main-f20cc5a-1656331750"
       auth       = "stg-main-d499feb-1656247276"
       calculator = ""
       data       = ""
