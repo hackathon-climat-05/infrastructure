@@ -68,9 +68,19 @@ resource "kubernetes_deployment" "auth_microservice" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations,
+      spec.0.template.0.spec.0.container.0.resources.0.limits,
+      spec.0.template.0.spec.0.container.0.resources.0.requests,
+      spec.0.template.0.spec.0.container.0.security_context,
+      spec.0.template.0.spec.0.security_context
+    ]
+  }
 }
 
-resource "kubernetes_horizontal_pod_autoscaler_v2" "auth_autoscaler" {
+resource "kubernetes_horizontal_pod_autoscaler" "auth_autoscaler" {
   metadata {
     name = "auth-autoscaler"
   }
@@ -116,5 +126,11 @@ resource "kubernetes_service" "auth" {
     }
 
     type = "ClusterIP"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations
+    ]
   }
 }

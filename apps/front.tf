@@ -65,9 +65,19 @@ resource "kubernetes_deployment" "app_front" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations,
+      spec.0.template.0.spec.0.container.0.resources.0.limits,
+      spec.0.template.0.spec.0.container.0.resources.0.requests,
+      spec.0.template.0.spec.0.container.0.security_context,
+      spec.0.template.0.spec.0.security_context
+    ]
+  }
 }
 
-resource "kubernetes_horizontal_pod_autoscaler_v2" "front_autoscaler" {
+resource "kubernetes_horizontal_pod_autoscaler" "front_autoscaler" {
   metadata {
     name      = "front-autoscaler"
     namespace = kubernetes_namespace.namespace.metadata[0].name
@@ -126,6 +136,12 @@ resource "kubernetes_service" "front" {
       target_port = "http"
     }
 
-    type = "LoadBalancer"
+    type = "ClusterIP"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      metadata.0.annotations
+    ]
   }
 }
