@@ -1,16 +1,16 @@
 resource "random_password" "mariadb_root_password" {
-  length  = 16
-  special = true
+  length  = 24
+  special = false
 }
 
 resource "random_password" "mariadb_user_password" {
-  length  = 16
-  special = true
+  length  = 24
+  special = false
 }
 
 resource "random_password" "mariadb_backup_password" {
-  length  = 16
-  special = true
+  length  = 24
+  special = false
 }
 
 resource "helm_release" "mariadb" {
