@@ -17,3 +17,8 @@ variable "namespace" {
   type        = string
   description = "The namespace in which the microservice should be deployed."
 }
+
+variable "db_credentials_secret" {
+  type        = string
+  description = "The name of the secret in which are stored the database credentials."
+}

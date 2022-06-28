@@ -44,6 +44,21 @@ resource "kubernetes_deployment" "microservice" {
             container_port = 8080
           }
 
+          dynamic "env" {
+            for_each = ["host", "port", "user", "password", "database"]
+
+            content {
+              name = "DB_${replace(upper(env.value), "-", "_")}"
+
+              value_from {
+                secret_key_ref {
+                  name = var.db_credentials_secret
+                  key  = env.value
+                }
+              }
+            }
+          }
+
           resources {
             requests = {
               cpu    = "250m"
