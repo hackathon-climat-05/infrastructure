@@ -129,12 +129,12 @@ services:
     image: mariadb:latest
     pull_policy: missing
 
+    ports:
+    - 3307:3306
+
     volumes:
     - db_data:/var/lib/mysql
     - db_config:/etc/mysql/conf.d
-
-    ports:
-    - 3307:3306
 
     environment:
     - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
