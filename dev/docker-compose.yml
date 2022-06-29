@@ -1,0 +1,84 @@
+services:
+  front:
+    build:
+      context: ./app-front
+      dockerfile: ./Dockerfile.dev
+      args:
+        NODE_AUTH_TOKEN: $NODE_AUTH_TOKEN
+
+    ports:
+    - 3000:3000
+
+    volumes:
+    - ./app-front:/app
+    - /app/node_modules
+
+  auth:
+    build:
+      context: ./auth-microservice
+      args:
+        NODE_AUTH_TOKEN: $NODE_AUTH_TOKEN
+
+    environment:
+    - PORT=80
+    - DB_HOST=db
+    - DB_PORT=3306
+    - DB_USER=greenmile
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_DATABASE=greenmile
+
+  calculator:
+    build:
+      context: ./calculator-microservice
+      args:
+        NODE_AUTH_TOKEN: $NODE_AUTH_TOKEN
+
+    environment:
+    - PORT=80
+    - DB_HOST=db
+    - DB_PORT=3306
+    - DB_USER=greenmile
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_DATABASE=greenmile
+
+  data:
+    build:
+      context: ./data-microservice
+      args:
+        NODE_AUTH_TOKEN: $NODE_AUTH_TOKEN
+
+    environment:
+    - PORT=80
+    - DB_HOST=db
+    - DB_PORT=3306
+    - DB_USER=greenmile
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_DATABASE=greenmile
+
+  challenges:
+    build:
+      context: ./challenges-microservice
+      args:
+        NODE_AUTH_TOKEN: $NODE_AUTH_TOKEN
+
+    environment:
+    - PORT=80
+    - DB_HOST=db
+    - DB_PORT=3306
+    - DB_USER=greenmile
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_DATABASE=greenmile
+
+  db:
+    image: mariadb:latest
+    pull_policy: missing
+
+    volumes:
+    - ./db-data:/var/lib/mysql
+    - ./db-config:/etc/mysql/conf.d
+
+    environment:
+    - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+    - MYSQL_USER=greenmile
+    - MYSQL_PASSWORD=$DB_PASSWORD
+    - MYSQL_DATABASE=greenmile

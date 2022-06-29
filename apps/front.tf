@@ -41,6 +41,11 @@ resource "kubernetes_deployment" "app_front" {
             container_port = 8080
           }
 
+          env {
+            name  = "PORT"
+            value = "8080"
+          }
+
           resources {
             requests = {
               cpu    = "250m"

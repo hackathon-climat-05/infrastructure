@@ -1,0 +1,15 @@
+[submodule "app-front"]
+	path = dev/app-front
+	url = ssh://git@github.com:hackathon-climat-05/app-front.git
+[submodule "auth-microservice"]
+	path = dev/auth-microservice
+	url = ssh://git@github.com:hackathon-climat-05/auth-microservice.git
+[submodule "calculator-microservice"]
+	path = dev/calculator-microservice
+	url = ssh://git@github.com:hackathon-climat-05/calculator-microservice.git
+[submodule "data-microservice"]
+	path = dev/data-microservice
+	url = ssh://git@github.com:hackathon-climat-05/data-microservice.git
+[submodule "challenges-microservice"]
+	path = dev/challenges-microservice
+	url = ssh://git@github.com:hackathon-climat-05/challenges-microservice.git
