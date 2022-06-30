@@ -1,11 +1,11 @@
 locals {
   versions = {
     prod = {
-      front      = "v1.0.0"
-      auth       = "v1.0.0"
-      calculator = "v1.0.0"
-      data       = "v1.0.0"
-      challenges = "v1.0.0"
+      front      = "v1.0.1"
+      auth       = "v1.0.1"
+      calculator = "v1.0.1"
+      data       = "v1.0.1"
+      challenges = "v1.0.1"
     }
 
     stg = {
