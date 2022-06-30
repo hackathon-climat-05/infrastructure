@@ -11,6 +11,9 @@ module "prod_apps" {
     "www.greenmile.earth",
     "www.greenmile.cloud"
   ]
+
+  google_client_id     = var.google_client_id
+  google_client_secret = var.google_client_secret
 }
 
 module "stg_apps" {
@@ -26,4 +29,7 @@ module "stg_apps" {
     "www.stg.greenmile.earth",
     "www.stg.greenmile.cloud"
   ]
+
+  google_client_id     = var.google_client_id
+  google_client_secret = var.google_client_secret
 }

@@ -34,6 +34,11 @@ services:
 
     environment:
     - PORT=80
+    - NODE_ENV=development
+    - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+    - GOOGLE_REDIRECT_URL=$GOOGLE_REDIRECT_URL
+    - JWT_SECRET=$JWT_SECRET
     - DB_HOST=db
     - DB_PORT=3306
     - DB_USER=greenmile
@@ -60,6 +65,11 @@ services:
 
     environment:
     - PORT=80
+    - NODE_ENV=development
+    - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+    - GOOGLE_REDIRECT_URL=$GOOGLE_REDIRECT_URL
+    - JWT_SECRET=$JWT_SECRET
     - DB_HOST=db
     - DB_PORT=3306
     - DB_USER=greenmile
@@ -86,6 +96,11 @@ services:
 
     environment:
     - PORT=80
+    - NODE_ENV=development
+    - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+    - GOOGLE_REDIRECT_URL=$GOOGLE_REDIRECT_URL
+    - JWT_SECRET=$JWT_SECRET
     - DB_HOST=db
     - DB_PORT=3306
     - DB_USER=greenmile
@@ -112,6 +127,11 @@ services:
 
     environment:
     - PORT=80
+    - NODE_ENV=development
+    - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+    - GOOGLE_REDIRECT_URL=$GOOGLE_REDIRECT_URL
+    - JWT_SECRET=$JWT_SECRET
     - DB_HOST=db
     - DB_PORT=3306
     - DB_USER=greenmile

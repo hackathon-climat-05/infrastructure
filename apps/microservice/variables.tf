@@ -18,6 +18,16 @@ variable "namespace" {
   description = "The namespace in which the microservice should be deployed."
 }
 
+variable "jwt_secret" {
+  type        = string
+  description = "The name of the secret in which is stored the JWT secret."
+}
+
+variable "google_credentials_secret" {
+  type        = string
+  description = "The name of the secret in which are stored the Google API credentials."
+}
+
 variable "db_credentials_secret" {
   type        = string
   description = "The name of the secret in which are stored the database credentials."

@@ -26,6 +26,8 @@ jobs:
       id: init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_google_client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
+        TF_VAR_google_client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       run: |
         terraform init
 
@@ -39,6 +41,8 @@ jobs:
       if: github.event_name == 'pull_request'
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_google_client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
+        TF_VAR_google_client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       run: |
         terraform plan -no-color -input=false
       continue-on-error: true
@@ -92,5 +96,7 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_google_client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
+        TF_VAR_google_client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       run: |
         terraform apply -auto-approve -input=false

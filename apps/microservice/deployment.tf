@@ -45,6 +45,21 @@ resource "kubernetes_deployment" "microservice" {
           }
 
           dynamic "env" {
+            for_each = ["client_id", "client_secret", "redirect_url"]
+
+            content {
+              name = "GOOGLE_${replace(upper(env.value), "-", "_")}"
+
+              value_from {
+                secret_key_ref {
+                  name = var.google_credentials_secret
+                  key  = env.value
+                }
+              }
+            }
+          }
+
+          dynamic "env" {
             for_each = ["host", "port", "user", "password", "database"]
 
             content {
