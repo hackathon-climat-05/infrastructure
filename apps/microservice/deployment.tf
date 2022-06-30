@@ -92,8 +92,9 @@ resource "kubernetes_deployment" "microservice" {
               port = 8080
             }
 
-            initial_delay_seconds = 1
-            period_seconds        = 1
+            initial_delay_seconds = 10
+            period_seconds        = 10
+            failure_threshold     = 5
           }
         }
       }
