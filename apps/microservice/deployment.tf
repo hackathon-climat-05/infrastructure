@@ -93,8 +93,8 @@ resource "kubernetes_deployment" "microservice" {
             }
 
             initial_delay_seconds = 10
-            period_seconds        = 10
-            failure_threshold     = 5
+            period_seconds        = 15
+            failure_threshold     = 10
           }
         }
       }
