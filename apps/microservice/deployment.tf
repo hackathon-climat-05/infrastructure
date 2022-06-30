@@ -44,6 +44,15 @@ resource "kubernetes_deployment" "microservice" {
             container_port = 8080
           }
 
+          env {
+            name = "JWT_SECRET"
+
+            secret_key_ref {
+              name = var.jwt_secret
+              key  = "jwt_secret"
+            }
+          }
+
           dynamic "env" {
             for_each = ["client_id", "client_secret", "redirect_url"]
 
