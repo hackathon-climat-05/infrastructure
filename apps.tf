@@ -16,20 +16,20 @@ module "prod_apps" {
   google_client_secret = var.google_client_secret
 }
 
-module "stg_apps" {
-  source = "./apps"
+# module "stg_apps" {
+#   source = "./apps"
 
-  env = "stg"
+#   env = "stg"
 
-  domains = [
-    "stg.greenmile.app",
-    "stg.greenmile.earth",
-    "stg.greenmile.cloud",
-    "www.stg.greenmile.app",
-    "www.stg.greenmile.earth",
-    "www.stg.greenmile.cloud"
-  ]
+#   domains = [
+#     "stg.greenmile.app",
+#     "stg.greenmile.earth",
+#     "stg.greenmile.cloud",
+#     "www.stg.greenmile.app",
+#     "www.stg.greenmile.earth",
+#     "www.stg.greenmile.cloud"
+#   ]
 
-  google_client_id     = var.google_client_id
-  google_client_secret = var.google_client_secret
-}
+#   google_client_id     = var.google_client_id
+#   google_client_secret = var.google_client_secret
+# }
