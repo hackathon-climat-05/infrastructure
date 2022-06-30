@@ -47,9 +47,11 @@ resource "kubernetes_deployment" "microservice" {
           env {
             name = "JWT_SECRET"
 
-            secret_key_ref {
-              name = var.jwt_secret
-              key  = "jwt_secret"
+            value_from {
+              secret_key_ref {
+                name = var.jwt_secret
+                key  = "jwt_secret"
+              }
             }
           }
 
