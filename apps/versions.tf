@@ -1,7 +1,7 @@
 locals {
   versions = {
     prod = {
-      front      = "v1.0.1"
+      front      = "v1.0.0"
       auth       = "v1.0.1"
       calculator = "v1.0.1"
       data       = "v1.0.1"

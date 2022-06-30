@@ -11,7 +11,7 @@ resource "kubernetes_deployment" "app_front" {
   }
 
   spec {
-    replicas = 2
+    replicas = 1
 
     selector {
       match_labels = {
@@ -48,13 +48,13 @@ resource "kubernetes_deployment" "app_front" {
 
           resources {
             requests = {
-              cpu    = "250m"
-              memory = "50Mi"
+              cpu    = "1"
+              memory = "2Gi"
             }
 
             limits = {
               cpu    = "1"
-              memory = "512Mi"
+              memory = "2Gi"
             }
           }
 
@@ -101,7 +101,7 @@ resource "kubernetes_horizontal_pod_autoscaler" "front_autoscaler" {
       name = kubernetes_deployment.app_front.metadata[0].name
     }
 
-    min_replicas = 2
+    min_replicas = 1
     max_replicas = var.env == "prod" ? 10 : 5
 
     metric {
