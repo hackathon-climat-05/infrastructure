@@ -10,8 +10,8 @@ resource "kubernetes_horizontal_pod_autoscaler" "autoscaler" {
       name = kubernetes_deployment.microservice.metadata[0].name
     }
 
-    min_replicas = 2
-    max_replicas = var.env == "prod" ? 10 : 5
+    min_replicas = 1
+    max_replicas = var.env == "prod" ? 5 : 2
 
     metric {
       type = "Resource"

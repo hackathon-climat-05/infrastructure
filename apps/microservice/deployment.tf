@@ -12,7 +12,7 @@ resource "kubernetes_deployment" "microservice" {
   }
 
   spec {
-    replicas = 2
+    replicas = 1
 
     selector {
       match_labels = {
@@ -87,13 +87,13 @@ resource "kubernetes_deployment" "microservice" {
 
           resources {
             requests = {
-              cpu    = "2"
-              memory = "2Gi"
+              cpu    = "1"
+              memory = "1Gi"
             }
 
             limits = {
-              cpu    = "2"
-              memory = "2Gi"
+              cpu    = "1"
+              memory = "1Gi"
             }
           }
 
